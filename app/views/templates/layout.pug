@@ -5,9 +5,8 @@ html(lang='')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title
+    title Yakkazoo
     meta(name='msapplication-tap-highlight', content='no')
-    link(rel='manifest', href='manifest.json')
     meta(name='mobile-web-app-capable', content='yes')
     meta(name='application-name', content='Web Starter Kit')
     link(rel='icon', sizes='192x192', href='images/touch/chrome-touch-icon-192x192.png')
@@ -18,6 +17,10 @@ html(lang='')
     meta(name='msapplication-TileImage', content='images/touch/ms-touch-icon-144x144-precomposed.png')
     meta(name='msapplication-TileColor', content='#2F3BA2')
     meta(name='theme-color', content='#2F3BA2')
+    link(rel="stylesheet", href="styles/main.css")
   body
-  block content
-  include ../partials/_footer.pug
+    block content
+    include ../partials/_footer.pug
+
+    block scripts
+      script(src="scripts/main.js")

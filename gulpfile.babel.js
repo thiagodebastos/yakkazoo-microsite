@@ -53,21 +53,20 @@ gulp.task('styles', () => {
   ];
 
   return gulp.src([
-    'app/styles/**/*.scss',
+    'app/styles/**/*.styl',
     'app/styles/**/*.css'
-  ])
+    ])
     .pipe($.newer('.tmp/styles'))
+    .pipe($.plumber())
     .pipe($.sourcemaps.init())
-    .pipe($.sass({
-      precision: 10
-    }).on('error', $.sass.logError))
+    .pipe($.stylus())
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.size({title: 'styles'}))
     .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('dist/styles'));
+    .pipe(gulp.dest('dist/styles'))
 });
 
 gulp.task('scripts', () =>
@@ -134,7 +133,7 @@ gulp.task('serve', ['scripts', 'styles'], () => {
   });
 
   gulp.watch(['app/**/*.pug'], ['html', reload]);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
+  gulp.watch(['app/styles/**/*.{styl,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
   gulp.watch(['app/images/**/*'], reload);
 });

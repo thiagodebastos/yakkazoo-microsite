@@ -30,7 +30,9 @@ gulp.task('images', () =>
 gulp.task('copy', () =>
   gulp.src([
     'app/*',
-    '!app/*.html'
+    '!app/*.html',
+    '!app/*.pug',
+    '!app/views'
   ], {
     dot: true
   }).pipe(gulp.dest('dist'))
@@ -90,7 +92,10 @@ gulp.task('scripts', () =>
 );
 
 gulp.task('html', () => {
-  return gulp.src('app/**/*.html')
+  return gulp.src('app/*.pug')
+    .pipe($.plumber())
+    .pipe($.pug())
+    .pipe(gulp.dest('.tmp'))
     .pipe($.useref({
       searchPath: '{.tmp,app}',
       noAssets: true
@@ -115,10 +120,11 @@ gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 gulp.task('serve', ['scripts', 'styles'], () => {
   browserSync({
     notify: false,
+    open: false,
     // Customize the Browsersync console logging prefix
-    logPrefix: 'WSK',
+    logPrefix: 'YAKKAZOO',
     // Allow scroll syncing across breakpoints
-    scrollElementMapping: ['main', '.mdl-layout'],
+    // scrollElementMapping: ['main', '.mdl-layout'],
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
@@ -127,7 +133,7 @@ gulp.task('serve', ['scripts', 'styles'], () => {
     port: 3000
   });
 
-  gulp.watch(['app/**/*.html'], reload);
+  gulp.watch(['app/**/*.pug'], ['html', reload]);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
   gulp.watch(['app/images/**/*'], reload);

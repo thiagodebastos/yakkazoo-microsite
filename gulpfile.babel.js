@@ -53,8 +53,7 @@ gulp.task('styles', () => {
   ];
 
   return gulp.src([
-    'app/styles/**/*.styl',
-    'app/styles/**/*.css'
+    'app/styles/main.styl'
     ])
     .pipe($.newer('.tmp/styles'))
     .pipe($.plumber())
@@ -67,6 +66,7 @@ gulp.task('styles', () => {
     .pipe($.size({title: 'styles'}))
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest('dist/styles'))
+    .pipe(browserSync.stream({match: '**/*.css'}))
 });
 
 gulp.task('scripts', () =>
@@ -129,11 +129,12 @@ gulp.task('serve', ['scripts', 'styles'], () => {
     //       will present a certificate warning in the browser.
     // https: true,
     server: ['.tmp', 'app'],
-    port: 3000
+    port: 3000,
+    injectChanges: true
   });
 
   gulp.watch(['app/**/*.pug'], ['html', reload]);
-  gulp.watch(['app/styles/**/*.{styl,css}'], ['styles', reload]);
+  gulp.watch(['app/styles/**/*.{styl,css}'], ['styles']);
   gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
   gulp.watch(['app/images/**/*'], reload);
 });

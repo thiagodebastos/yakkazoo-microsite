@@ -90,10 +90,15 @@ ul
 
 /* ICONS */
 .icon
-    &--social
-        width: 70px
-        &:hover
-            fill: red
+    &--social svg
+        height: 70px
+        & .cls-1
+            transition: 200ms
+            transition-timing-function: ease-inout
+        &:hover .cls-1
+            fill: #0f414c
+
+
 
 /* SERVICES */
 .services
@@ -140,3 +145,5 @@ ul
         border-top: 8px solid $brand-blue
         background-image: url(../images/background-mobile.jpg)
         background-size: cover
+.cls-1
+    fill: red

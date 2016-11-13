@@ -22,6 +22,22 @@ $brand-blue = #00b3ea
 $title-color-dark = $base-grey-dark
 $title-color-light = $base-grey-light
 
+/* MEDIA QUERIES */
+media_queries = {
+    mobile  : "only screen and (max-width: 600px)",
+    tablet  : "only screen and (min-width: 601px) and (max-width: 800px)",
+    desktop : "only screen and (min-width: 801px)"
+}
+
+for_breakpoint(breakpoints)
+    conditions = ()
+    for breakpoint in breakpoints
+        push(conditions, media_queries[breakpoint])
+    conditions = join(", ", conditions)
+    @media conditions
+        {block}
+
+
 /* BASE */
 *
     margin: 0
@@ -39,13 +55,26 @@ ul
     list-style-type: none
 
 /* GRID */
+.flex-grid
+    display: flex
+.col-4-lg
+    flex: 4
+.col-8-lg
+    flex: 8
 
+
+.main-container
+    background-image: url(../images/bg-mobile-header.png)
+    background-size: 100%
+    background-repeat: no-repeat
+    +for_breakpoint(desktop)
+        background: none
 
 /* HEADER */
 .site-header
-    background-image: url(../images/bg-mobile-header.png)
-    background-size: cover
     height: 270px
+    +for_breakpoint(desktop)
+        background-image: none
 
 .site-title
     width: 175px
@@ -67,6 +96,13 @@ ul
         color: $base-grey
     & span
         color: $brand-blue
+
+/* SIDEBAR */
+.main-sidebar
+    background: url(../images/background.jpg)
+    background-size: cover
+    +for_breakpoint(mobile tablet)
+        display: none
 
 /* BUTTONS */
 .button
@@ -124,6 +160,9 @@ ul
         font-weight: 600
         color: $base-grey-dark
         text-transform: uppercase
+    a
+        color: $brand-blue
+        text-decoration: none
 
 .address
     font-family: $font-rale
@@ -134,16 +173,13 @@ ul
 /* FOOTER */
 .site-footer
     height: 130px
-    width: 100vw
     overflow: hidden
-    font-family: sans-serif
-    font-weight: 300
+    font-family: $font-rale
     & .copyright
         color: $brand-blue
     &-image
         height: 100%
-        border-top: 8px solid $brand-blue
-        background-image: url(../images/background-mobile.jpg)
+        border-top: 6px solid $brand-blue
+        background-image: url(../images/bg-mobile-footer.jpg)
         background-size: cover
-.cls-1
-    fill: red
+

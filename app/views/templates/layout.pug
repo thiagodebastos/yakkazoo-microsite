@@ -21,8 +21,11 @@ html(lang='')
     link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Lato:900|Passion+One:600|Raleway:500,600")
   body
     .main-container
-        block content
-        include ../partials/footer.pug
+        .flex-grid
+            .col-4-lg
+                block content
+                include ../partials/footer.pug
+            sidebar.col-8-lg.main-sidebar
 
     block scripts
     script(src="scripts/main.js")

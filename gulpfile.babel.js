@@ -60,6 +60,7 @@ gulp.task('styles', () => {
     .pipe($.sourcemaps.init())
     .pipe($.stylus())
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.plumber.stop())
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.if('*.css', $.cssnano()))

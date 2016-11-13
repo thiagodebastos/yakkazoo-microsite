@@ -3,22 +3,140 @@
 @import 'modules'
 @import 'themes'
 
-font-lato = 'Lato', sans-serif
-font-rale = 'Raleway', sans-serif
-font-passion = 'Passion One', cursive
+/* HELPERS */
+debug(color = red)
+    border: 1px solid color
+
+/* FONTS */
+$font-lato = 'Lato', sans-serif
+$font-rale = 'Raleway', sans-serif
+$font-passion = 'Passion One', 'Impact', sans-serif
+
+/* COLOURS */
+$base-grey = #959595
+$base-grey-light = #c1c1c1
+$base-grey-dark = #7f7f7f
+
+$brand-blue = #00b3ea
+
+$title-color-dark = $base-grey-dark
+$title-color-light = $base-grey-light
+
+/* BASE */
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
 
 h1
-  font-family: font-lato
-
-p
-  font-family: font-rale
-
-.services
-  font-family: font-passion
+    font-size: 2rem
+h2
+    font-size: 1.75rem
+h3
+    font-size: 1.5rem
 
 ul
-  list-style-type: none
+    list-style-type: none
 
-footer
-  img
-    border-top: 4px solid cyan
+/* GRID */
+
+
+/* HEADER */
+.site-header
+    background-image: url(../images/bg-mobile-header.png)
+    background-size: cover
+    height: 270px
+
+.site-title
+    width: 175px
+    font-family: $font-lato
+    text-transform: uppercase
+    padding-top: 90px
+    &--a
+        color: $base-grey
+    &--b
+        color: $base-grey-light
+
+
+/* BODY */
+.main-body
+    .logo
+        padding: 3rem 0 2rem 0
+    p
+        font-family: $font-rale
+        color: $base-grey
+    & span
+        color: $brand-blue
+
+/* BUTTONS */
+.button
+    font-size: 1.125rem // 8px
+    font-family: $font-rale
+    font-weight: bold
+    text-transform: uppercase
+    color: $brand-blue
+    padding .75em 1em
+    background-color: transparent
+    text-align: right
+    &--vision
+        border: 1px solid $brand-blue
+        width: 100%
+
+/* SOCIAL */
+.list
+    &--social
+        display: flex
+        justify-content: space-between
+
+/* ICONS */
+.icon
+    &--social
+        width: 70px
+        &:hover
+            fill: red
+
+/* SERVICES */
+.services
+    font-family: $font-passion
+    font-size: 1.5rem
+    text-transform: uppercase
+    color: $base-grey
+    & li
+        padding-left: 0.5rem
+    & li:nth-child(1)
+        border-left: 10px solid #f49436
+    & li:nth-child(2)
+        border-left: 10px solid #d40b8a
+    & li:nth-child(3)
+        border-left: 10px solid #8ec966
+    & li:nth-child(4)
+        border-left: 10px solid #b31f43
+
+/* CONTACT US */
+.contact
+    h2
+        font-family: $font-lato
+        font-weight: 600
+        color: $base-grey-dark
+        text-transform: uppercase
+
+.address
+    font-family: $font-rale
+    font-size: 1.25rem
+    line-height: 1.5em
+    color: $base-grey
+
+/* FOOTER */
+.site-footer
+    height: 130px
+    width: 100vw
+    overflow: hidden
+    font-family: sans-serif
+    font-weight: 300
+    & .copyright
+        color: $brand-blue
+    &-image
+        height: 100%
+        border-top: 8px solid $brand-blue
+        background-image: url(../images/background-mobile.jpg)
+        background-size: cover

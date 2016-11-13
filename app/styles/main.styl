@@ -54,6 +54,10 @@ h3
 ul
     list-style-type: none
 
+section
+header
+    padding 0 1.5rem
+
 /* GRID */
 .flex-grid
     display: flex
@@ -119,6 +123,13 @@ ul
         width: 100%
 
 /* SOCIAL */
+.social-section
+    +for_breakpoint(desktop)
+        position: absolute
+        top: 48%
+        left: 40%
+        li
+            margin-right: 1rem
 .list
     &--social
         display: flex
@@ -178,8 +189,10 @@ ul
     & .copyright
         color: $brand-blue
     &-image
-        height: 100%
         border-top: 6px solid $brand-blue
         background-image: url(../images/bg-mobile-footer.jpg)
         background-size: cover
+        height: 300px
+        +for_breakpoint(desktop)
+            display: none
 

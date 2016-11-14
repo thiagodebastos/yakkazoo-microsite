@@ -25,8 +25,9 @@ $title-color-light = $base-grey-light
 /* MEDIA QUERIES */
 media_queries = {
     mobile  : "only screen and (max-width: 600px)",
-    tablet  : "only screen and (min-width: 601px) and (max-width: 800px)",
-    desktop : "only screen and (min-width: 801px)"
+    tablet  : "only screen and (min-width: 601px) and (max-width: 1100px)",
+    desktop : "only screen and (min-width: 1101px)",
+    xl      : "only screen and (min-width: 1201px)",
 }
 
 for_breakpoint(breakpoints)
@@ -40,8 +41,6 @@ for_breakpoint(breakpoints)
 
 /* BASE */
 *
-    margin: 0
-    padding: 0
     box-sizing: border-box
 
 h1
@@ -57,6 +56,7 @@ ul
 section
 header
     padding 1.5rem
+    max-width: 25em
 
 /* GRID */
 .flex-grid
@@ -65,14 +65,26 @@ header
     flex: 4
 .col-8-lg
     flex: 8
+    +for_breakpoint(tablet)
+        flex: 6
 
 
 .main-container
     background-image: url(../images/bg-mobile-header.png)
     background-size: 100%
     background-repeat: no-repeat
-    +for_breakpoint(desktop)
+    +for_breakpoint(tablet desktop)
+        margin: 0 auto
+        max-width: 2000px
         background: none
+
+.content-left
+    margin-left: auto
+    section
+    header
+        +for_breakpoint(desktop)
+            margin-left: auto
+
 
 /* HEADER */
 .site-header
@@ -89,7 +101,29 @@ header
         color: $base-grey
     &--b
         color: $base-grey-light
+     +for_breakpoint(tablet desktop)
+        font-size: 3rem
+        width: initial
 
+.content-left .site-title
+    +for_breakpoint(desktop)
+        text-align: right
+        &--b
+            display: none
+
+.main-sidebar .site-header
+    color white
+    padding-left: 0
+    & .site-title
+        position: relative
+        left: 0
+        &--b
+            color: white
+    +for_breakpoint(mobile tablet)
+        display: none
+    +for_breakpoint(desktop)
+        & .site-title--a
+            display: none
 
 /* BODY */
 .main-body
@@ -99,14 +133,17 @@ header
         font-family: $font-rale
         color: $base-grey
         margin-bottom: 1em
+        line-height: 1.5em
     & span
         color: $brand-blue
 
 /* SIDEBAR */
 .main-sidebar
-    background: url(../images/background.jpg)
+    background: url(../images/background.jpg) no-repeat
     background-size: cover
-    +for_breakpoint(mobile tablet)
+    background-position: 20% 0
+    padding: 0 1.5rem
+    +for_breakpoint(mobile)
         display: none
 
 /* BUTTONS */
@@ -120,22 +157,53 @@ header
     background-color: transparent
     text-align: right
     display: inline-block
-    &--vision
-        border: 1px solid $brand-blue
-        width: 100%
+    border: 1px solid $brand-blue
+    width: 100%
+    text-decoration: none
+    &:before
+        content: ""
+        display: inline-block
+        float: left
+    &--vision:before
+        background-image: url(../images/icons/icon_play.png)
+        width: 18px
+        height: 18px
+    &--contact:before
+        background-image: url(../images/icons/icon_mail.png)
+        width: 16px
+        height: 12px
+        margin-top: 3px
+    // hide by default
+    &--contact
+        display: none
+
+.button-group
+    +for_breakpoint(desktop)
+        display: flex
+        .button
+            margin-right: 1em
+            font-size: 0.75rem
+            line-height: 1.5em
+            max-width: 136px
+            &--contact
+                display: block
+
 
 /* SOCIAL */
 .social-section
-    +for_breakpoint(desktop)
-        position: absolute
-        top: 48%
-        left: 40%
-        li
-            margin-right: 1rem
-.list
-    &--social
-        display: flex
-        justify-content: space-between
+    .list
+        &--social
+            display: flex
+            justify-content: space-between
+    &--mobile
+        +for_breakpoint(tablet desktop)
+            display: none
+    &--large
+        +for_breakpoint(tablet desktop)
+            position: absolute
+            top: 62%
+            width: 320px
+
 
 /* ICONS */
 .icon
@@ -146,7 +214,11 @@ header
             transition-timing-function: ease-inout
         &:hover .cls-1
             fill: #0f414c
-
+.main-sidebar .icon
+    .cls-1
+        fill: #0f414c
+    &:hover .cls-1
+        fill: $brand-blue
 
 
 /* SERVICES */
@@ -155,6 +227,7 @@ header
     font-size: 1.5rem
     text-transform: uppercase
     color: $base-grey
+    margin-top: 2.5rem
     & li
         padding-left: .5em
         margin-bottom: .25em
@@ -168,6 +241,9 @@ header
         border-left: 8px solid #b31f43
 
 /* CONTACT US */
+.contact-us
+    +for_breakpoint(tablet desktop)
+        display: none
 .contact
     font-family: $font-rale
     margin-bottom: 1em
@@ -183,6 +259,7 @@ header
         text-decoration: none
         color: $brand-blue
         line-height: 1.75em
+
 
 .address a
     font-size: 1.25rem
@@ -203,7 +280,7 @@ header
         background-image: url(../images/bg-mobile-footer.jpg)
         background-size: cover
         height: 300px
-        +for_breakpoint(desktop)
+        +for_breakpoint(tablet desktop)
             display: none
 
 /* VIMEO MODAL */
@@ -230,7 +307,7 @@ header
             height 100%
 
         // on desktop the modal should have a max width and be centered
-        +for_breakpoint(desktop)
+        +for_breakpoint(tablet desktop)
             position: fixed
             width: 960px
             height: 538px
@@ -245,7 +322,7 @@ header
         position: fixed
         visibility: hidden
         opacity: 0
-        background-color: rgba(0,0,0,.8)
+        background-color: rgba(255,255,255,.95)
         top: 0
         left: 0
         height: 100%
@@ -277,3 +354,7 @@ header
             top: initial
             bottom: -23px
 
+
+html
+    @media only screen and (min-width: 601px) and (max-width: 840px)
+        font-size: 13px

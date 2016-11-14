@@ -159,7 +159,7 @@ gulp.task('serve:dist', ['default'], () =>
 );
 
 // Deploy dist to gh-pages
-gulp.task('deploy', () => {
+gulp.task('deploy', ['default'], () => {
     return gulp.src('./dist/**/*')
     .pipe($.ghPages())
 })

@@ -1,0 +1,11 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Thiago de Bastos -- Developer -- @thiagodebastos
+  Humberto Macario -- Designer
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3, ES6

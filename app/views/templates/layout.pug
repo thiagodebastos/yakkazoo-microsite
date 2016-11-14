@@ -19,10 +19,12 @@ html(lang='')
     meta(name='theme-color', content='#2F3BA2')
     link(rel="stylesheet", href="styles/main.css")
     link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Lato:900|Passion+One|Raleway:500,600")
+    script(src="https://player.vimeo.com/api/player.js")
   body
     .main-container
         .flex-grid
             .col-4-lg
+                include ../partials/modal.pug
                 block content
                 include ../partials/footer.pug
             sidebar.col-8-lg.main-sidebar

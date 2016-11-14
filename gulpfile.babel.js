@@ -94,7 +94,9 @@ gulp.task('scripts', () =>
 gulp.task('html', () => {
   return gulp.src('app/*.pug')
     .pipe($.plumber())
-    .pipe($.pug())
+    .pipe($.pug({
+        baseDir: path.resolve()
+    }))
     .pipe(gulp.dest('.tmp'))
     .pipe($.useref({
       searchPath: '{.tmp,app}',

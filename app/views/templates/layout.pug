@@ -22,13 +22,16 @@ html(lang='')
     script(src="https://player.vimeo.com/api/player.js")
   body
     .main-container
+        include ../partials/video-modal.pug
+        include ../partials/contact-modal.pug
         .flex-grid
-            .col-4-lg
-                include ../partials/modal.pug
+            .col-4-lg.content-left
                 block content
                 include ../partials/footer.pug
             sidebar.col-8-lg.main-sidebar
-                include ../partials/social-icons
+                include ../partials/header
+                .social-section.social-section--large
+                    include ../partials/social-icons
 
     block scripts
     script(src="scripts/main.js")

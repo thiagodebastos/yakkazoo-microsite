@@ -9,16 +9,21 @@ section.main-body
         |You want different.
         span  We are different
 
-    a.button.button--vision#modal-open(href="#video-modal")
-        span.icon.icon--arrow-left
-            | =>
-        |our vision
+    .button-group
+        a.button.button--vision#modal-open(href="#video-modal")
+            span.icon.icon--play
+            |our vision
+        a.button.button--contact(href="mailto:hello@yakkazoo.com:")
+            span.icon.icon--mail
+            |contact us
 
-section.services
-    ul
-        li environments
-        li planning
-        li integrated technologies
-        li content
 
-include ./social-icons
+    .services
+        ul
+            li environments
+            li planning
+            li integrated technologies
+            li content
+
+section.social-section.social-section--mobile
+    include ./social-icons

@@ -93,6 +93,7 @@ header
 .site-header
     height: 270px
     +for_breakpoint(desktop)
+        height: initial
         background-image: none
 
 .site-title
@@ -105,6 +106,7 @@ header
     &--b
         color: $base-grey-light
      +for_breakpoint(tablet desktop)
+        padding-top: 45px
         font-size: 3rem
         width: initial
     +for_breakpoint(xl)
@@ -137,7 +139,7 @@ header
 /* BODY */
 .main-body
     .logo
-        padding: 3rem 0 2rem 0
+        padding: 0 0 2rem 0
     p
         font-family: $font-rale
         color: $base-grey
@@ -152,6 +154,7 @@ header
     background-size: cover
     background-position: -50px 0
     padding: 0 1.5rem
+    height: 100vh
     +for_breakpoint(mobile)
         display: none
 
@@ -211,13 +214,13 @@ header
         +for_breakpoint(tablet desktop)
             position: absolute
             top: 62%
-            width: 320px
+            width: 20rem
 
 
 /* ICONS */
 .icon
     &--social svg
-        height: 70px
+        height: 4.375rem
         & .cls-1
             transition: 200ms
             transition-timing-function: ease-inout

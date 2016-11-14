@@ -1,0 +1,41 @@
+/* MAIN CONTENT */
+.main-container
+    background-image: url(../images/bg-mobile-header.png)
+    background-size: 100%
+    background-repeat: no-repeat
+    +for_breakpoint(mobile)
+        margin: 0 auto
+        max-width: 400px
+    +for_breakpoint(tablet desktop)
+        margin: 0 auto
+        max-width: 2000px
+        background: none
+
+.content-left
+    margin-left: auto
+    section
+    header
+        +for_breakpoint(desktop)
+            margin-left: auto
+
+
+/* BODY */
+.main-body
+    .logo
+        padding: 0 0 2rem 0
+    p
+        font-family: $font-rale
+        color: $base-grey
+        margin-bottom: 1em
+        line-height: 1.5em
+    & span
+        color: $brand-blue
+
+// Hide contact section within .content-left on desktop
+.content-left .contact-us
+    +for_breakpoint(tablet desktop)
+        display: none
+
+html
+    @media only screen and (min-width: 601px) and (max-width: 840px)
+        font-size: 13px

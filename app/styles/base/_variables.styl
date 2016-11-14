@@ -1,0 +1,34 @@
+/* HELPERS */
+debug(color = red)
+    border: 1px solid color
+
+/* FONTS */
+$font-lato = 'Lato', sans-serif
+$font-rale = 'Raleway', sans-serif
+$font-passion = 'Passion One', 'Impact', sans-serif
+
+/* COLOURS */
+$base-grey = #959595
+$base-grey-light = #c1c1c1
+$base-grey-dark = #7f7f7f
+
+$brand-blue = #00b3ea
+
+$title-color-dark = $base-grey-dark
+$title-color-light = $base-grey-light
+
+/* MEDIA QUERIES */
+media_queries = {
+    mobile  : "only screen and (max-width: 600px)",
+    tablet  : "only screen and (min-width: 601px) and (max-width: 1100px)",
+    desktop : "only screen and (min-width: 1101px)",
+    xl      : "only screen and (min-width: 1600px)",
+}
+
+for_breakpoint(breakpoints)
+    conditions = ()
+    for breakpoint in breakpoints
+        push(conditions, media_queries[breakpoint])
+    conditions = join(", ", conditions)
+    @media conditions
+        {block}

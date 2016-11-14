@@ -1,0 +1,41 @@
+/* BUTTONS */
+.button
+    font-size: 1.125rem // 8px
+    font-family: $font-rale
+    font-weight: bold
+    text-transform: uppercase
+    color: $brand-blue
+    padding .75em 1em
+    background-color: transparent
+    text-align: right
+    display: inline-block
+    border: 1px solid $brand-blue
+    width: 100%
+    text-decoration: none
+    &:before
+        content: ""
+        display: inline-block
+        float: left
+    &--vision:before
+        background-image: url(../images/icons/icon_play.png)
+        width: 18px
+        height: 18px
+    &--contact:before
+        background-image: url(../images/icons/icon_mail.png)
+        width: 16px
+        height: 12px
+        margin-top: 3px
+    // hide by default
+    &--contact
+        display: none
+
+.button-group
+    +for_breakpoint(tablet desktop)
+        display: flex
+        .button
+            margin-right: 1em
+            font-size: 0.75rem
+            line-height: 1.5em
+            max-width: 136px
+            &--contact
+                display: block

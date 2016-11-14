@@ -1,0 +1,15 @@
+/* FOOTER */
+.site-footer
+    height: 130px
+    overflow: hidden
+    font-family: $font-rale
+    & .copyright
+        color: $brand-blue
+    &-image
+        border-top: 6px solid $brand-blue
+        background-image: url(../images/bg-mobile-footer.jpg)
+        background-size: cover
+        height: 300px
+        +for_breakpoint(tablet desktop)
+            display: none
+

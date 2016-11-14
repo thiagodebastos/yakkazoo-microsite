@@ -1,0 +1,46 @@
+/* HEADER */
+.site-header
+    height: 270px
+    +for_breakpoint(desktop)
+        height: initial
+        background-image: none
+
+.site-title
+    width: 175px
+    font-family: $font-lato
+    text-transform: uppercase
+    padding-top: 90px
+    &--a
+        color: $base-grey
+    &--b
+        color: $base-grey-light
+     +for_breakpoint(tablet desktop)
+        padding-top: 45px
+        font-size: 3rem
+        width: initial
+    +for_breakpoint(xl)
+        font-size: 4.1rem
+        &--a
+            margin-left: -125px
+        &--b
+            width: 400px
+
+.content-left .site-title
+    +for_breakpoint(desktop)
+        text-align: right
+        &--b
+            display: none
+
+.main-sidebar .site-header
+    color white
+    padding-left: 0
+    & .site-title
+        position: relative
+        left: 0
+        &--b
+            color: white
+    +for_breakpoint(mobile tablet)
+        display: none
+    +for_breakpoint(desktop)
+        & .site-title--a
+            display: none

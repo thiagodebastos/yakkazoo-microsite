@@ -27,7 +27,7 @@ media_queries = {
     mobile  : "only screen and (max-width: 600px)",
     tablet  : "only screen and (min-width: 601px) and (max-width: 1100px)",
     desktop : "only screen and (min-width: 1101px)",
-    xl      : "only screen and (min-width: 1201px)",
+    xl      : "only screen and (min-width: 1600px)",
 }
 
 for_breakpoint(breakpoints)
@@ -73,6 +73,9 @@ header
     background-image: url(../images/bg-mobile-header.png)
     background-size: 100%
     background-repeat: no-repeat
+    +for_breakpoint(mobile)
+        margin: 0 auto
+        max-width: 400px
     +for_breakpoint(tablet desktop)
         margin: 0 auto
         max-width: 2000px
@@ -104,6 +107,12 @@ header
      +for_breakpoint(tablet desktop)
         font-size: 3rem
         width: initial
+    +for_breakpoint(xl)
+        font-size: 4.1rem
+        &--a
+            margin-left: -125px
+        &--b
+            width: 400px
 
 .content-left .site-title
     +for_breakpoint(desktop)
@@ -141,7 +150,7 @@ header
 .main-sidebar
     background: url(../images/background.jpg) no-repeat
     background-size: cover
-    background-position: 20% 0
+    background-position: -50px 0
     padding: 0 1.5rem
     +for_breakpoint(mobile)
         display: none

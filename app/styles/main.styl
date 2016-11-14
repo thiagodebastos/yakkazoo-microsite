@@ -253,9 +253,6 @@ header
         border-left: 8px solid #b31f43
 
 /* CONTACT US */
-.contact-us
-    +for_breakpoint(tablet desktop)
-        display: none
 .contact
     font-family: $font-rale
     margin-bottom: 1em
@@ -272,13 +269,18 @@ header
         color: $brand-blue
         line-height: 1.75em
 
-
 .address a
     font-size: 1.25rem
     font-family: $font-rale
     line-height: 1.75em
     color: $base-grey
     text-decoration: none
+
+// Hide contact section within .content-left on desktop
+.content-left .contact-us
+    +for_breakpoint(tablet desktop)
+        display: none
+
 
 /* FOOTER */
 .site-footer
@@ -302,32 +304,13 @@ header
         height: 0
         width: 100%
         padding-bottom 56.25%
-        display: none
         visibility: hidden
         opacity: 0
-        transition: opacity .5s
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        transition: opacity .5s ease-in-out
         z-index: 10
-
-        // the actual iframe should fill its parent container's size
-        & iframe,
-        & object,
-        & embed
-            position absolute
-            top 0
-            left 0
-            width 100%
-            height 100%
-
-        // on desktop the modal should have a max width and be centered
-        +for_breakpoint(tablet desktop)
-            position: fixed
-            width: 960px
-            height: 538px
-            max-width: 100%
-            padding-bottom: 0
-            top: 50%
-            left: 50%
-            transform: translate(-50%, -50%)
 
     &:before
         content: ""
@@ -339,7 +322,7 @@ header
         left: 0
         height: 100%
         width: 100%
-        transition: opacity .5s
+        transition: opacity .5s ease-in-out
         z-index: 10
 
     &:target &--container,
@@ -362,9 +345,48 @@ header
         padding: .5em
         text-align: center
         line-height: 0.78
+
+.video-modal
+
+    // the actual iframe should fill its parent container's size
+    & iframe,
+    & object,
+    & embed
+        position absolute
+        top 0
+        left 0
+        width 100%
+        height 100%
+
+    // on desktop the modal should have a max width and be centered
+    +for_breakpoint(desktop)
+        & .modal--container
+            width: 960px
+            height: 538px
+            padding-bottom: 0
+    & .modal--close
         +for_breakpoint(tablet mobile)
             top: initial
-            bottom: -23px
+            bottom: -22px
+
+.contact-modal
+    position: fixed
+    left: 50%
+    top: 50%
+    z-index: 10
+    h2
+        font-size: 2.5rem
+    .contact a
+        font-size: 1.5rem
+    .address a
+        font-size: 1rem
+    & .modal--container
+        width: 20rem
+        height: 20rem
+    & .modal--close
+        top: -20px
+        right: inherit
+        left: 17rem
 
 
 html

@@ -28,7 +28,8 @@ const videoPlayer = () => {
         autoplay: true,
         byline: false,
         portrait: false,
-        title: false
+        title: false,
+        volume: 50
     };
 
     const playerLoader = document.getElementById('player-loader');
@@ -44,6 +45,7 @@ const videoPlayer = () => {
     player.ready().then(() => {
         console.log('[v-player] Video ready')
         player.play()
+        player.setVolume(.5)
     });
 
 

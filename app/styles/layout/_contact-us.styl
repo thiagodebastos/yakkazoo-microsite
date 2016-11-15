@@ -13,6 +13,20 @@
         margin-bottom: 1rem
         color: $brand-blue
         line-height: 2.5em
+    & .icon
+        &:before
+            content: ""
+            display: inline-block
+            float: left
+            margin-top: .85em
+            margin-right: .5em
+            background-size: cover
+            width: 18px
+            height: 18px
+        &--mail:before
+            background-image: url(../images/icons/icon_mail.png)
+        &--phone:before
+            background-image: url(../images/icons/icon_phone.png)
 
 .address a
     font-size: 1.25rem

@@ -16,18 +16,21 @@
         content: ""
         display: inline-block
         float: left
-    &--vision:before
-        background-image: url(../images/icons/icon_play.png)
         width: 18px
         height: 18px
+    &--vision:before
+        background-image: url(../images/icons/icon_play.png)
     &--contact:before
         background-image: url(../images/icons/icon_mail.png)
-        width: 16px
-        height: 12px
-        margin-top: 3px
+        background-size: cover
+        opacity: .4
     // hide by default
     &--contact
         display: none
+    +for_breakpoint(tablet)
+        padding: 1.25em 1.5em 1em 1em
+        &:before
+            margin-top: -3px
 
 .button-group
     +for_breakpoint(tablet desktop)

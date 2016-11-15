@@ -25,7 +25,7 @@ const videoPlayer = () => {
     const options = {
         id: 187136326,
         loop: false,
-        autoplay: false,
+        autoplay: true,
         byline: false,
         portrait: false,
         title: false
@@ -43,6 +43,7 @@ const videoPlayer = () => {
 
     player.ready().then(() => {
         console.log('[v-player] Video ready')
+        player.play()
     });
 
 

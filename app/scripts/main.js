@@ -7,6 +7,7 @@ modalOpen.addEventListener('click', () => {
 
 const modalClose = document.getElementById('modal-close')
 
+const sendHome = () => window.location.assign(`${window.location.origin}`);
 
 const reducer = (action) => {
     switch(action) {
@@ -16,6 +17,9 @@ const reducer = (action) => {
             break;
         case 'MODAL CLOSE':
             console.log('Modal Closed')
+            break;
+        case 'SEND HOME':
+            sendHome();
             break;
     }
 }
@@ -28,35 +32,32 @@ const videoPlayer = () => {
         autoplay: true,
         byline: false,
         portrait: false,
-        title: false,
-        volume: 50
+        title: false
     };
 
-    const playerLoader = document.getElementById('player-loader');
+    const playerContainer = document.getElementById('vimeo-player');
 
-    const player = new Vimeo.Player('vimeo-player', options);
+    const player = new Vimeo.Player(playerContainer, options);
 
-    player.setVolume(0);
+    player.setVolume(0.5);
 
     player.on('play', () => {
         console.log('played the video!');
     });
 
     player.ready().then(() => {
-        console.log('[v-player] Video ready')
-        player.play()
-        player.setVolume(.5)
+        console.log('[v-player] Video ready');
     });
 
-
-    player.on('ended', data => {
+    player.on('ended', () => {
         console.log('video ended')
         // close video when ended
+        reducer('SEND HOME');
     });
 
     modalClose.addEventListener('click', () => {
         reducer('MODAL CLOSE')
-        player.unload()
+        player.unload();
     });
 }
 
